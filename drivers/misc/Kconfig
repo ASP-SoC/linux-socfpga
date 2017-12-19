@@ -4,6 +4,26 @@
 
 menu "Misc devices"
 
+config CHANNEL_MUX
+	tristate "Channelmultiplexer driver"
+	default y
+	help
+	  This module provides a interface to easy access a
+	  channel mux peripheral.
+
+	  This module can also be built as a module. If so, the module
+	  will be called channel_mux.
+
+config DATA_SOURCE_MUX
+	tristate "Datasourcemultiplexer driver"
+	default y
+	help
+	  This module provides a interface to easy access a
+	  datasource mux peripheral.
+
+	  This module can also be built as a module. If so, the module
+	  will be called channel_mux.
+
 config SENSORS_LIS3LV02D
 	tristate
 	depends on INPUT
