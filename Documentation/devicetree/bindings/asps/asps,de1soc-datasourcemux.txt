@@ -1,0 +1,5 @@
+Data Source Multiplexer bindings for Altera's SoCFPGA platform
+
+Required properties:
+- compatible : shall be one of the following:
+"asps,de1soc-datasourcemux" - for the audio source data multiplexer

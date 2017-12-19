@@ -1,0 +1,5 @@
+Channel Multiplexer bindings for Altera's SoCFPGA platform
+
+Required properties:
+- compatible : shall be one of the following:
+"asps,de1soc-channelmux" - for the audio source data multiplexer
