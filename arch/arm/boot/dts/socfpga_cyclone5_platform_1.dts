@@ -16,7 +16,7 @@
 
 / {
 	soc {
-		channelmux0: channelmux@0xFF200060 {
+		channelmux0: channelmux@0xFF2000C0 {
 			compatible = "asps,de1soc-channelmux";
 			reg = <0xFF200060 0xF>;
 		};
