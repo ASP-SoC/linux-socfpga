@@ -5,6 +5,8 @@
 
 obj-$(CONFIG_IBM_ASM)		+= ibmasm/
 obj-$(CONFIG_CHANNEL_MUX)	+= channel_mux.o
+obj-$(CONFIG_FIR_EN)		+= fir_en.o
+obj-$(CONFIG_FIR_DATA)		+= fir_data.o
 obj-$(CONFIG_DATA_SOURCE_MUX)	+= data_source_mux.o
 obj-$(CONFIG_AD525X_DPOT)	+= ad525x_dpot.o
 obj-$(CONFIG_AD525X_DPOT_I2C)	+= ad525x_dpot-i2c.o

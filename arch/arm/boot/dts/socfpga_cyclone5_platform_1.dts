@@ -25,5 +25,15 @@
 			compatible = "asps, de1soc-datasourcemux";
 			reg = <0xFF200070 0xF>;
 		};
+
+		firen0: firen0@0xFF2000a4 {
+			compatible = "asps,de1soc-firen";
+			reg = <0xFF2000a4 0x1>;
+		};
+
+		firdata0: firdata0@0xFF200400 {
+			compatible = "asps,de1soc-firdata";
+			reg = <0xFF200400 0x200>;
+		};
 	};
 };

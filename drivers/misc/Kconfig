@@ -14,6 +14,27 @@ config CHANNEL_MUX
 	  This module can also be built as a module. If so, the module
 	  will be called channel_mux.
 
+config FIR_EN
+	tristate "Fir-Filter enable driver"
+	default y
+	help
+	  This module provides a interface to easy access a
+	  fir enable peripheral.
+
+	  This module can also be built as a module. If so, the module
+	  will be called fir_en.
+
+
+config FIR_DATA
+	tristate "Fir-Filter data driver"
+	default y
+	help
+	  This module provides a interface to easy access a
+	  fir peripheral.
+
+	  This module can also be built as a module. If so, the module
+	  will be called fir_data.
+
 config DATA_SOURCE_MUX
 	tristate "Datasourcemultiplexer driver"
 	default y
