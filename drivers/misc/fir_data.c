@@ -20,7 +20,7 @@
 #define DRIVER_NAME		"firdata"
 
 #define FIR_DATA_RESET	((s32) 0x0)
-#define FIR_DATA_DATA_LEN	((u32) 1)
+#define FIR_DATA_DATA_LEN	((u32) 128)
 
 
 /* ----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ struct firdata_dat {
 	void *regs;
 	int size;
 	struct miscdevice misc;
-	s32 buffer[FIR_DATA_DATA_LEN];
+	u32 buffer[128];
 };
 
 /* ----------------------------------------------------------------------------
@@ -85,9 +85,10 @@ static ssize_t file_read(struct file *filp, char __user *buff,
 	if (writeBytes <= 0)
 		return 0;
 
-	transfer = writeBytes -
-		copy_to_user(buff, data->buffer + *offp, writeBytes);
+	//transfer = writeBytes -
+	//	copy_to_user(buff, data->buffer + *offp, writeBytes);
 
+	
 	*offp += transfer;
 	return transfer;
 }
@@ -100,7 +101,10 @@ static ssize_t file_write(struct file *filp, const char __user *buff,
 	int max;
 	int writeBytes;
 	int offs;
+	int i;
 
+	printk("Entered firdata write, write %d bytes\n",count);
+	
 	max = data->size - *offp;
 
 	if (max > count)
@@ -112,10 +116,17 @@ static ssize_t file_write(struct file *filp, const char __user *buff,
 		return -EINVAL;
 
 	transfer = writeBytes -
-		copy_from_user(data->buffer + *offp, buff, writeBytes);
+		copy_from_user(data->buffer, buff, writeBytes);
 
-	iowrite32(*(data->buffer), (data->regs)+offs*4);
 
+	for(i=0; i<128; i++){
+	  printk("Writing: 0x%8x to 0x%8x\n",(data->buffer[i]), ((unsigned int)data->regs)+i*4);
+	  
+	  iowrite32((data->buffer[i]), (data->regs)+i*4);
+	}
+
+	printk("Transfer: %d\n",transfer);
+	
 	*offp += transfer;
 	return transfer;
 }
